@@ -13,9 +13,13 @@ public class JdbcTest {
 		Statement stmt = null;
 		ResultSet rs = null;
 
+		String dbUrl = "jdbc:mysql://localhost:3306/employees";
+		String username = "root";
+		String password = "";
+
 		try {
 			// 1. Get a database connection
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees", "root", "");
+			conn = DriverManager.getConnection(dbUrl, username, password);
 
 			System.out.println("Database connection successfully");
 
