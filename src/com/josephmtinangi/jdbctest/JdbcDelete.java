@@ -13,7 +13,6 @@ public class JdbcDelete {
 		Scanner input = new Scanner(System.in);
 
 		Connection conn = null;
-		Statement stmt = null;
 
 		String dbUrl = "jdbc:mysql://localhost:3306/cda";
 		String username = "root";
