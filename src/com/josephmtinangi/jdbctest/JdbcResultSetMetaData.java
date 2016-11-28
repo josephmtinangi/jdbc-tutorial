@@ -16,15 +16,23 @@ public class JdbcResultSetMetaData {
 		ResultSet rs = null;
 
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cda", "root", "");
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM film");
+			rs = stmt.executeQuery("SELECT * FROM users");
 
 			ResultSetMetaData resultSetMetaData = rs.getMetaData();
 
 			int columnCount = resultSetMetaData.getColumnCount();
-			System.out.println("COLUMNS: " + columnCount);
-			
+			System.out.println("COLUMN COUNT: " + columnCount);
+
+			System.out.println("COLUMNS");
+			for (int column = 1; column < columnCount; column++) {
+				System.out.print("\nNAME:" + resultSetMetaData.getColumnName(column) + "\nTYPE: "
+						+ resultSetMetaData.getColumnTypeName(column) + "\nIS NULLABLE: "
+						+ resultSetMetaData.isNullable(column) + "\nIS AUTO INCREMENT: "
+						+ resultSetMetaData.isAutoIncrement(column) + "\n");
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
