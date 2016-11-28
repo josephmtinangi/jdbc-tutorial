@@ -16,6 +16,7 @@ public class JdbcSchemaInfo {
 		String catalog = null;
 		String schemaPattern = null;
 		String tableNamePattern = null;
+		String columnNamePattern = null;
 		String[] types = null;
 
 		try {
@@ -30,8 +31,23 @@ public class JdbcSchemaInfo {
 				System.out.println(rs.getString("TABLE_NAME"));
 			}
 
+			rs = databaseMetaData.getColumns(catalog, schemaPattern, "film", columnNamePattern);
+
+			System.out.println("COLUMN NAMES IN TABLE film");
+			while (rs.next()) {
+				System.out.println(rs.getString("COLUMN_NAME"));
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 	}
