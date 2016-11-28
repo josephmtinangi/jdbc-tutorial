@@ -14,7 +14,6 @@ public class JdbcUpdate {
 
 		Connection conn = null;
 		Statement stmt = null;
-		ResultSet rs = null;
 
 		String dbUrl = "jdbc:mysql://localhost:3306/cda";
 		String username = "root";
